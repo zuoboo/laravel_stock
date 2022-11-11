@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('tasks', TaskController::class);
+Route::resource('items', ItemController::class)->middleware(['auth', 'verified']);
 Route::get('finished-tasks', [TaskController::class, 'finishedTaskIndex'])->name('finished-tasks');
 
 require __DIR__.'/auth.php';

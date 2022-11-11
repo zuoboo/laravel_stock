@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('finished-tasks')" :active="request()->routeIs('finished-tasks')">
                         できたもの
                     </x-nav-link>
+                    <x-nav-link :href="route('items.index')" :active="request()->routeIs('items.index')">
+                        在庫管理
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +80,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('finished-tasks')" :active="request()->routeIs('finished-tasks')">
                 できたもの
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('items.index')" :active="request()->routeIs('items.index')">
+                在庫管理
             </x-responsive-nav-link>
         </div>
 

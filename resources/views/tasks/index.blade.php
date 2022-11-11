@@ -27,8 +27,8 @@
                                 @endif
                             </label>
                             <button type="submit"
-                                class="mt-8 p-4 bg-slate-800 text-white w-full max-w-xs hover:bg-slate-900 transition-colors">
-                                追加する
+                                class="mt-8 p-4 bg-red-300 w-full max-w-xs hover:bg-red-400 transition-colors">
+                                Todo!!
                             </button>
                         </div>
                     </form>
@@ -39,6 +39,9 @@
                                     <table class="table-auto w-full text-left whitespace-no-wrap">
                                         <thead>
                                             <tr>
+                                                {{-- <th
+                                                    class="w-1/5 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100 rounded-tl rounded-bl">
+                                                    入力者</th> --}}
                                                 <th
                                                     class="w-3/4 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100 rounded-tl rounded-bl">
                                                     TODO</th>
@@ -50,6 +53,7 @@
                                         <tbody>
                                             @foreach ($tasks as $task)
                                                 <tr>
+                                                    {{-- <td class="px-4 py-3 bg-blue-50">{{ $user }}</td> --}}
                                                     <td class="px-4 py-3 bg-blue-50">{{ $task->name }}</td>
                                                     <td class="px-4 py-3 bg-blue-50">
                                                         <div class="flex justify-end">

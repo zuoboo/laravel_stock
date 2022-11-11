@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('name', 100);
-            $table->boolean('status')->default(false);
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->string('name', 100)->index();
+            $table->string('quantity', 100);
+            $table->string('memo', 500)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('items');
     }
 };

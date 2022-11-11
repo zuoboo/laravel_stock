@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        できたもの
+        在庫管理
     </x-slot>
 
     <body class="flex flex-col min-h-[100vh]">
@@ -13,20 +13,23 @@
                                 <thead>
                                     <tr>
                                         <th
-                                            class="w-3/5 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100 rounded-tl rounded-bl">
-                                            TODO</th>
+                                            class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100">
+                                            名前</th>
                                         <th
-                                            class="w-2/5 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100">
-                                            できた日時</th>
+                                            class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100">
+                                            在庫</th>
+                                        <th
+                                            class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100">
+                                            メモ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($finished_tasks as $task)
+                                    {{-- @foreach ($finished_tasks as $task)
                                         <tr>
                                             <td class="px-4 py-3 bg-blue-50">{{ $task->name }}</td>
                                             <td class="px-4 py-3 bg-blue-50">{{ $task->updated_at}}</td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                         </div>
