@@ -6,6 +6,7 @@
     <body class="flex flex-col min-h-[100vh]">
         <main class="grow">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="my-10 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <section class="text-gray-600 body-font">
                     <div class="container px-5 py-24 mx-auto">
                         <div class="lg:w-2/3 w-full mx-auto overflow-auto">
@@ -24,12 +25,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($finished_tasks as $task)
+                                    @foreach ($items as $item)
                                         <tr>
-                                            <td class="px-4 py-3 bg-blue-50">{{ $task->name }}</td>
-                                            <td class="px-4 py-3 bg-blue-50">{{ $task->updated_at}}</td>
+                                            <td class="px-4 py-3 bg-blue-50">{{ $item->name }}</td>
+                                            <td class="px-4 py-3 bg-blue-50">{{ $item->quantity }}</td>
+                                            <td class="px-4 py-3 bg-blue-50">{{ $item->memo }}</td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
