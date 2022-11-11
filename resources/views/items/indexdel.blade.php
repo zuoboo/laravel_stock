@@ -1,21 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            在庫管理
-        </h2>
+        在庫管理
     </x-slot>
 
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <section class="text-gray-600 body-font relative">
+    <body class="flex flex-col min-h-[100vh]">
+        <main class="grow">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="my-10 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <section class="text-gray-600 body-font">
                         <div class="container py-4 mx-auto">
-                            <div class="lg:w-4/5 w-full mx-auto overflow-auto py-4">
-                                <a href="{{ url('items/create') }}" class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full">登録</a>
-                            </div>
-                            <div class="lg:w-4/5 w-full mx-auto overflow-auto">
+                            <div class="lg:w-2/3 w-full mx-auto overflow-auto">
                                 <table class="table-auto w-full text-left whitespace-no-wrap">
                                     <thead>
                                         <tr>
@@ -45,6 +39,6 @@
                     </section>
                 </div>
             </div>
-        </div>
-    </div>
+        </main>
+    </body>
 </x-app-layout>
