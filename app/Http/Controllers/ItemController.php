@@ -16,7 +16,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('items.index');
+        $items = Item::all();
+
+        return view('items.index', compact('items'));
 
     }
 
@@ -48,7 +50,7 @@ class ItemController extends Controller
             'memo' => $request->memo,
         ]);
 
-        return redirect()->route('items.index');
+        return redirect()->route('items.index')->with('message', '登録しました');
     }
 
     /**
@@ -70,7 +72,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('items.edit', compact('item'));
+
     }
 
     /**
