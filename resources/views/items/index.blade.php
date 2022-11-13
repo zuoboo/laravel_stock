@@ -28,14 +28,27 @@
                                             <th
                                                 class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100">
                                                 メモ</th>
+                                            <th
+                                                class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100">
+                                                操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($items as $item)
                                             <tr>
                                                 <td class="px-4 py-3 bg-blue-50">{{ $item->name }}</td>
+                                                @if ($item->quantity <= 1)
+                                                <td class="px-4 py-3 text-rose-600 bg-blue-50">{{ $item->quantity }}</td>
+                                                <td>
+                                                    <div class="px-4 py-3 bg-blue-50">{{ $item->memo }}</div>
+                                                    <div class="px-4 text-rose-600 bg-blue-50">在庫が少ないので買いに行って下さい。</div>
+                                                </td>
+                                                @else
                                                 <td class="px-4 py-3 bg-blue-50">{{ $item->quantity }}</td>
                                                 <td class="px-4 py-3 bg-blue-50">{{ $item->memo }}</td>
+                                                @endif
+                                                <td class="px-4 py-3 bg-blue-50">
+                                                    <a href="{{ route('items.edit', ['item' => $item->id ])}}">消費or追加</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
