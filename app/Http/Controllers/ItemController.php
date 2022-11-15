@@ -19,7 +19,6 @@ class ItemController extends Controller
         $items = Item::all();
 
         return view('items.index', compact('items'));
-
     }
 
     /**
@@ -73,7 +72,6 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         return view('items.edit', compact('item'));
-
     }
 
     /**
@@ -85,7 +83,24 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+        // dd($request);
+        $quantity = $request->quantity;
+        // if ($quantity == 3) {
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env("LINE_MESSAGE_CHANNEL_TOKEN"));
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env("LINE_MESSAGE_CHANNEL_SECRET")]);
+
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('💩');
+            $response = $bot->pushMessage('U995b337233088dbc2c7be26dd0e7af4f', $textMessageBuilder);
+            if ($response->isSucceeded()) {
+                // echo 'LINEを送りました';
+                return redirect()->route('items.index')->with('message', 'LINEを送りました!');
+            }
+
+            // Failed
+            echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+        // }
+
+
     }
 
     /**
