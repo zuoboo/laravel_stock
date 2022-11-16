@@ -85,11 +85,11 @@ class ItemController extends Controller
     {
         $item->quantity = $request->quantity;
         $item->save();
-        if ($item->quantity == 1) {
+        if ($item->quantity <= 3) {
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env("LINE_MESSAGE_CHANNEL_TOKEN"));
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env("LINE_MESSAGE_CHANNEL_SECRET")]);
 
-            $word = $item->name . "が残り少ないので買いに行ってください";
+            $word = $item->name . "の在庫が" . $item->quantity . "個になりました。残りが少ないので買いに行ってください。";
             $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($word);
             $response = $bot->pushMessage('U995b337233088dbc2c7be26dd0e7af4f', $textMessageBuilder);
             if ($response->isSucceeded()) {
