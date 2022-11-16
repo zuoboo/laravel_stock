@@ -12,6 +12,7 @@
             });
         @endif
     </script>
+
     <body class="flex flex-col min-h-[100vh]">
         <main class="grow">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -48,9 +49,6 @@
                                     <table class="table-auto w-full text-left whitespace-no-wrap">
                                         <thead>
                                             <tr>
-                                                {{-- <th
-                                                    class="w-1/5 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100 rounded-tl rounded-bl">
-                                                    入力者</th> --}}
                                                 <th
                                                     class="w-3/4 px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-blue-100 rounded-tl rounded-bl">
                                                     TODO</th>
@@ -62,37 +60,35 @@
                                         <tbody>
                                             @foreach ($tasks as $task)
                                                 <tr>
-                                                    {{-- <td class="px-4 py-3 bg-blue-50">{{ $user }}</td> --}}
                                                     <td class="px-4 py-3 bg-blue-50">{{ $task->name }}</td>
                                                     <td class="px-4 py-3 bg-blue-50">
                                                         <div class="flex justify-end">
-                                                            <div>
-                                                                <form
-                                                                    action="{{ route('tasks.edit', ['task' => $task->id]) }}"
-                                                                    class="inline-block text-gray-500 font-medium">
+                                                            <div class="px-2">
+                                                                <form action="{{ route('tasks.edit', ['task' => $task->id]) }}">
                                                                     <button type="submit"
-                                                                        class="bg-blue-500 py-4 w-20 text-white md:hover:bg-blue-500 transition-colors">編集</button>
+                                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 w-20 rounded-full">編集</button>
                                                                 </form>
                                                             </div>
-                                                            <div>
-                                                                <form
-                                                                    method="post" action="{{ route('tasks.update', ['task' => $task->id]) }}"
+                                                            <div class="px-2">
+                                                                <form method="post"
+                                                                    action="{{ route('tasks.update', ['task' => $task->id]) }}"
                                                                     class="inline-block text-gray-500 font-medium">
                                                                     @csrf
                                                                     @method('put')
-                                                                    <input type="hidden" name="status" value="{{ $task->status }}">
+                                                                    <input type="hidden" name="status"
+                                                                        value="{{ $task->status }}">
                                                                     <button type="submit"
-                                                                        class="bg-blue-500 py-4 w-20 text-white md:hover:bg-blue-500 transition-colors">できた！</button>
+                                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 w-20 rounded-full">できた！</button>
                                                                 </form>
                                                             </div>
-                                                            <div>
-                                                                <form
-                                                                    method="post" onclick="return deletePost(this)" action="{{ route('tasks.destroy', ['task' => $task->id]) }}"
+                                                            <div class="px-2">
+                                                                <form method="post" onclick="return deletePost(this)"
+                                                                    action="{{ route('tasks.destroy', ['task' => $task->id]) }}"
                                                                     class="inline-block text-gray-500 font-medium">
                                                                     @csrf
                                                                     @method('delete')
                                                                     <button type="submit"
-                                                                        class="bg-blue-500 py-4 w-20 text-white md:hover:bg-blue-500 transition-colors">削除</button>
+                                                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 w-20 rounded-full">削除</button>
                                                                 </form>
                                                             </div>
                                                         </div>

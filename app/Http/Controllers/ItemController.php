@@ -95,9 +95,8 @@ class ItemController extends Controller
             if ($response->isSucceeded()) {
                 return redirect()->route('items.index')->with('message', 'LINEを送りました、確認してください');
             }
-
-            // Failed
-            echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+            // // Failed
+            // echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
         } else {
             return redirect()->route('items.index')->with('message', '編集完了!');
         }
