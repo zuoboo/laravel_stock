@@ -4,6 +4,16 @@
             在庫管理
         </h2>
     </x-slot>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (session('message'))
+            $(function() {
+                toastr.success('{{ session('message') }}');
+            });
+        @endif
+    </script>
 
 
     <div class="py-12">
@@ -48,7 +58,7 @@
                                                 <td class="px-4 py-3 bg-blue-50">{{ $item->memo }}</td>
                                                 @endif
                                                 <td class="px-4 py-3 bg-blue-50">
-                                                    <a href="{{ route('items.edit', ['item' => $item->id ])}}">消費or追加</a></td>
+                                                    <a class="btn bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full" href="{{ route('items.edit', ['item' => $item->id ])}}">在庫編集</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

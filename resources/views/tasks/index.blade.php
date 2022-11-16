@@ -2,7 +2,16 @@
     <x-slot name="header">
         TODOリスト
     </x-slot>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        @if (session('message'))
+            $(function() {
+                toastr.success('{{ session('message') }}');
+            });
+        @endif
+    </script>
     <body class="flex flex-col min-h-[100vh]">
         <main class="grow">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
