@@ -83,22 +83,24 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        // dd($request);
-        $quantity = $request->quantity;
-        // if ($quantity == 3) {
+        $item->quantity = $request->quantity;
+        $item->save();
+        if ($item->quantity == 1) {
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(env("LINE_MESSAGE_CHANNEL_TOKEN"));
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => env("LINE_MESSAGE_CHANNEL_SECRET")]);
 
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('💩');
+            $word = $item->name . "が残り少ないので買いに行ってください";
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($word);
             $response = $bot->pushMessage('U995b337233088dbc2c7be26dd0e7af4f', $textMessageBuilder);
             if ($response->isSucceeded()) {
-                // echo 'LINEを送りました';
-                return redirect()->route('items.index')->with('message', 'LINEを送りました!');
+                return redirect()->route('items.index')->with('message', 'LINEを送りました、確認してください');
             }
 
             // Failed
             echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
-        // }
+        } else {
+            return redirect()->route('items.index')->with('message', '編集完了!');
+        }
 
 
     }

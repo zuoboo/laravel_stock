@@ -97,13 +97,15 @@ class TaskController extends Controller
             $task = Task::findOrFail($id);
             $task->name = $request->name;
             $task->save();
+            return redirect()->route('tasks.index')->with('message', '更新OK');
 
         } else { // 完了
             $task = Task::findOrFail($id);
             $task->status = true;
             $task->save();
+            return redirect()->route('tasks.index')->with('message', '完了です！お疲れ様でした！');
         }
-        return redirect()->route('tasks.index')->with('message', '更新OK');
+
     }
 
     /**
@@ -117,7 +119,7 @@ class TaskController extends Controller
         // dd($id);
         $task = Task::findOrFail($id);
         $task->delete();
-        return redirect()->route('tasks.index');
+        return redirect()->route('tasks.index')->with('message', '削除しました');
     }
 
     public function finishedTaskIndex()

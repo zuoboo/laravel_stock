@@ -3,6 +3,7 @@
         できたもの
     </x-slot>
 
+
     <body class="flex flex-col min-h-[100vh]">
         <main class="grow">
             <div class="max-w-7xl mx-auto px-4 sm:px-6">
